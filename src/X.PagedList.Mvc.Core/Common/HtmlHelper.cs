@@ -304,7 +304,11 @@ public sealed class HtmlHelper
                 firstPageToDisplay = list.PageCount - maxPageNumbersToDisplay + 1;
             }
         }
-
+        //text
+        if (options.DisplayPageCountAndCurrentLocation)
+        {
+            listItemLinks.Add(PageCountAndLocationText(list, options));
+        }
         //first
         if (options.DisplayLinkToFirstPage == PagedListDisplayMode.Always ||
             (options.DisplayLinkToFirstPage == PagedListDisplayMode.IfNeeded && firstPageToDisplay > 1))
@@ -319,11 +323,7 @@ public sealed class HtmlHelper
             listItemLinks.Add(Previous(list, generatePageUrl, options));
         }
 
-        //text
-        if (options.DisplayPageCountAndCurrentLocation)
-        {
-            listItemLinks.Add(PageCountAndLocationText(list, options));
-        }
+        
 
         //text
         if (options.DisplayItemSliceAndTotal && options.ItemSliceAndTotalPosition == ItemSliceAndTotalPosition.Start)

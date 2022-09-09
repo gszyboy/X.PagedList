@@ -22,13 +22,13 @@ public sealed class PagedListRenderOptions
         MaximumPageNumbersToDisplay = 10;
         DisplayEllipsesWhenNotShowingAllPageNumbers = true;
         EllipsesFormat = "&#8230;";
-        LinkToFirstPageFormat = "<<";
-        LinkToPreviousPageFormat = "<";
+        LinkToFirstPageFormat = "第一页";
+        LinkToPreviousPageFormat = "上一页";
         LinkToIndividualPageFormat = "{0}";
-        LinkToNextPageFormat = ">";
-        LinkToLastPageFormat = ">>";
-        PageCountAndCurrentLocationFormat = "Page {0} of {1}.";
-        ItemSliceAndTotalFormat = "Showing items {0} through {1} of {2}.";
+        LinkToNextPageFormat = "下一页";
+        LinkToLastPageFormat = "最后一页";
+        PageCountAndCurrentLocationFormat = "第 {0} 页，共 {1}页。";
+        ItemSliceAndTotalFormat = "共 {2} 条，当前显示第 {0} 至  {1} 条。";
         ItemSliceAndTotalPosition = ItemSliceAndTotalPosition.Start;
         FunctionToDisplayEachPageNumber = null;
         ClassToApplyToFirstListItemInPager = null;
@@ -57,11 +57,17 @@ public sealed class PagedListRenderOptions
     ///<summary>
     /// CSSClasses to append to the &lt;ul&gt; element in the paging control.
     ///</summary>
+    ///<remarks>
+    ///附加到分页控件中的 <ul> 元素的 class。
+    /// </remarks>
     public IEnumerable<string> UlElementClasses { get; set; }
 
     /// <summary>
-    /// Attrinutes to appendto the &lt;ul&gt; element in the paging control
+    /// Attrinutes to appendto the &lt;ul&gt; element in the paging control.
     /// </summary>
+    /// <remarks>
+    /// 附加到分页控件中的 <ul> 元素的属性
+    /// </remarks>
     public IDictionary<string, string> UlElementattributes { get; set; }
 
     ///<summary>
@@ -77,6 +83,9 @@ public sealed class PagedListRenderOptions
     ///<summary>
     /// CSS Classes to append to every &lt;a&gt; or &lt;span&gt; element that represent each page in the paging control.
     ///</summary>
+    ///<remarks>
+    ///附加到代表分页控件中每个页面的每个 <a> 或 <span> 元素的 CSS 类。
+    /// </remarks>
     public IEnumerable<string> PageClasses { get; set; }
 
     ///<summary>
@@ -132,32 +141,49 @@ public sealed class PagedListRenderOptions
     ///<summary>
     /// When true, includes hyperlinks for each page in the list.
     ///</summary>
+    /// <remarks>
+    /// 如果为 true，则包括列表中每个页面的超链接。
+    /// </remarks>
     public bool DisplayLinkToIndividualPages { get; set; }
 
     ///<summary>
     /// When true, shows the current page number and the total number of pages in the list.
     ///</summary>
+    ///<remarks>
+    /// 如果为 true，则显示当前页码和列表中的总页数。
+    ///</remarks>
     ///<example>
     /// "Page 3 of 8."
+    /// 第 3 页，共 6页。
     ///</example>
     public bool DisplayPageCountAndCurrentLocation { get; set; }
 
     ///<summary>
     /// When true, shows the one-based index of the first and last items on the page, and the total number of items in the list.
     ///</summary>
+    ///<remarks>
+    /// 为 true 时，显示页面上第一个和最后一个项目的从一开始的索引，以及列表中的项目总数。
+    /// </remarks>
     ///<example>
     /// "Showing items 75 through 100 of 183."
+    /// "共 18 条，当前显示第 1 至 3 条。"
     ///</example>
     public bool DisplayItemSliceAndTotal { get; set; }
 
     ///<summary>
     /// The maximum number of page numbers to display. Null displays all page numbers.
     ///</summary>
+    ///<remarks>
+    /// 要显示的最大页码数。 Null 显示所有页码。
+    /// </remarks>
     public int? MaximumPageNumbersToDisplay { get; set; }
 
     ///<summary>
     /// If true, adds an ellipsis where not all page numbers are being displayed.
     ///</summary>
+    ///<remarks>
+    /// 如果为 true，则在未显示所有页码的位置添加省略号。
+    /// </remarks>
     ///<example>
     /// "1 2 3 4 5 ...",
     /// "... 6 7 8 9 10 ...",
@@ -235,12 +261,16 @@ public sealed class PagedListRenderOptions
     public ItemSliceAndTotalPosition ItemSliceAndTotalPosition { get; set; }
 
     /// <summary>
-    /// A function that will render each page number when specified (and DisplayLinkToIndividualPages is true). If no function is specified, the LinkToIndividualPageFormat value will be used instead.
+    /// A function that will render each page number when specified (and DisplayLinkToIndividualPages is true). 
+    /// If no function is specified, the LinkToIndividualPageFormat value will be used instead.
     /// </summary>
+    /// <remarks>
+    /// 指定时将呈现每个页码的函数（并且显示指向单个页面的链接为真）。如果未指定函数，则将使用“链接到单个页面格式”值。
+    /// </remarks>
     public Func<int, string> FunctionToDisplayEachPageNumber { get; set; }
 
     /// <summary>
-    /// Text that will appear between each page number. If null or whitespace is specified, no delimiter will be shown.
+    /// 页码之间的文本。如果指定了 null 或空格，则不会显示分隔符。
     /// </summary>
     public string DelimiterBetweenPageNumbers { get; set; }
 
